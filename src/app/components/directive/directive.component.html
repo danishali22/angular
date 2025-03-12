@@ -1,4 +1,6 @@
 <div class="row p-3">
+    <h1>Structural Directives</h1>
+    <h2>Ng If</h2>
     <div class="col-3">
         <div class="bg-success p-3 text-light" *ngIf="isDiv1Visible">Div 1</div>
     </div>
@@ -12,8 +14,8 @@
     <div class="col-3">
         <div class="row">
             <div class="col-6">
-                <label for="">Select Cast</label>
-                <select class="form-control" [(ngModel)]="selectedCast">
+                <label class="form-label">Select Cast</label>
+                <select class="form-select" [(ngModel)]="selectedCast">
                     <option>Arain</option>
                     <option>Khan</option>
                     <option>Butt</option>
@@ -22,14 +24,14 @@
                 </select>
             </div>
             <div class="col-6" *ngIf="selectedCast == 'Other'">
-                <label for="">Other Cast</label>
+                <label class="form-label">Other Cast</label>
                 <input type="text" class="form-control" placeholder="Enter you cast">
             </div>
         </div>
     </div>
 </div>
 
-<div class="row pt-2">
+<div class="row py-2">
     <div class="col-3 text-center">
         <button class="btn btn-danger" (click)="hideDiv1()">Hide</button>
         <button class="btn btn-success mx-2" (click)="showDiv1()">Show</button>
@@ -41,5 +43,61 @@
     <div class="col-3 text-center">
         <input type="text" placeholder="Num 1" [(ngModel)]="num1">
         <input type="text" placeholder="Num 2" [(ngModel)]="num2">
+    </div>
+</div>
+
+<div class="row mt-5 p-3">
+    <h2>Ng For</h2>
+    <div class="col-3 my-2">
+        <ul>
+            <li *ngFor="let city of cityList">{{city}}</li>
+        </ul>
+        <ol>
+            @for (item of cityList; track $index) {
+                <li> {{item}} </li>
+            }
+        </ol>
+    </div>
+    <div class="col-3 my-2">
+        <label class="form-label">Select City</label>
+        <select class="form-select">
+            <option *ngFor="let item of cityList">{{item}}</option>
+        </select>
+    </div>
+    <div class="col-6 my-2">
+        <table class="table table-bordered">
+            <thead>
+                <th>Sr</th>
+                <th>Name</th>
+                <th>City</th>
+                <th>Grade</th>
+                <th>Status</th>
+            </thead>
+            <tbody>
+                <tr *ngFor="let item of studentList; let sr=index">
+                    <td> {{sr}} </td>
+                    <td> {{item.name}} </td>
+                    <td> {{item.city}} </td>
+                    <td>
+                        @if (item.grade == 'A') {
+                            <span>Student has Grade A</span>
+                        }
+                        @else if (item.grade == 'B') {
+                            <span>Student has Grade B</span>
+                        }
+                        @else if (item.grade == 'C') {
+                            <span>Student has Grade C</span>
+                        }
+                        @else {
+                            <span>Student has no Grade</span>
+                        }
+                    </td>
+                    <td>  
+                        <p *ngIf="item.isActive === true">Student is Active</p>
+                        <p *ngIf="item.isActive === false">Student is De-Active</p>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
     </div>
 </div>
