@@ -19,7 +19,7 @@
     </div>
 
 </div>
-<div class="row">
+<div class="row p-3">
     <h1>from .ts to .html</h1>
     <div class="col-6 p-3">
         <h2>Interpolation</h2>
@@ -33,7 +33,7 @@
     </div>
 </div>
 <div class="row col-12 p-3">
-    <h1>from .html to .ts</h1>
+    <h1 class="underline">from .html to .ts</h1>
     <h2>Event Binding</h2>
     <div class="row">
         <div class="col-3">
@@ -53,5 +53,16 @@
                 <option>Peshawar</option>
             </select>
         </div>
+    </div>
+</div>
+
+<div class="row p-3">
+    <h2>Two way data binding by ng model</h2>
+    <div class="col-3">
+        <input type="text" [(ngModel)]="courseName">
+    </div>
+    <div class="col-3">
+        <span class="fs-3 me-3">{{isActive}}</span>
+        <input type="checkbox" [(ngModel)]="isActive">
     </div>
 </div>
