@@ -89,7 +89,7 @@
                             <span>Student has Grade C</span>
                         }
                         @else {
-                            <span>Student has no Grade</span>
+                            <span>No Grade Found</span>
                         }
                     </td>
                     <td>  
@@ -99,5 +99,36 @@
                 </tr>
             </tbody>
         </table>
+    </div>
+</div>
+
+<hr>
+
+<div class="row p-3">
+    <h1>Attribute Directives</h1>
+    <div class="col-3">
+        <div class="p-3" [ngClass]="studentClass">
+            Student
+        </div>
+    </div>
+    <div class="col-3">
+        <div class="p-3" [ngClass]="employeeClass">
+            Employee
+        </div>
+        <input type="text" class="mt-2 form-control" [(ngModel)]="employeeClass">
+    </div>
+    <div class="col-3">
+        <div class="p-3 mb-2 text-light" [ngClass]="productClass">
+            Product
+        </div>
+        <button class="btn btn-danger" (click)="addProuctClass('red')">Red</button>
+'       <button class="btn btn-success mx-2" (click)="addProuctClass('green')">Green</button>
+'    </div>
+    <div class="col-3">
+        <div class="p-3 text-light" [ngClass]="isOrderActive == true ? 'bg-success' : 'bg-danger' ">
+            Order
+        </div>
+
+        <input type="checkbox" class="mt-2 form-check-input" [(ngModel)]="isOrderActive">
     </div>
 </div>

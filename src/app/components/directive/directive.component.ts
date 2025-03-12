@@ -1,10 +1,10 @@
-import { NgFor, NgIf } from '@angular/common';
+import { NgClass, NgFor, NgIf } from '@angular/common';
 import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-directive',
-  imports: [NgIf, FormsModule, NgFor],
+  imports: [NgIf, FormsModule, NgFor, NgClass],
   templateUrl: './directive.component.html',
   styleUrl: './directive.component.css'
 })
@@ -14,6 +14,11 @@ export class DirectiveComponent {
   num1: number = 0;
   num2: number = 0;
   selectedCast: string = "";
+
+  studentClass = "bg-success text-light";
+  employeeClass = "";
+  productClass = "bg-danger";
+  isOrderActive: boolean = true;
 
   cityList: string[] = ["Lahore", "Karachi", "Peshawar", "Quetta", "Multan"];
 
@@ -39,5 +44,14 @@ export class DirectiveComponent {
 
   hideShowDiv2(isDisplay: boolean){
     this.isDiv2Visible = isDisplay;
+  }
+
+  addProuctClass(colorName: string) {
+    if(colorName == 'red'){
+      this.productClass = "bg-danger";
+    }
+    else {
+      this.productClass = "bg-success";
+    }
   }
 }
