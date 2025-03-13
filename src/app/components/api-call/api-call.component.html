@@ -1,1 +1,17 @@
-<p>api-call works!</p>
+<button class="btn btn-info" (click)="getAllUsers()">Get Json Users</button>
+<button class="btn btn-warning mx-2" (click)="getComplaintUsers()">Get Complaint Users</button>
+
+<div class="row">
+    <div class="col-3">
+        <ul>
+            <li *ngFor="let item of jsonUsers">{{item.username}}</li>
+        </ul>
+    </div>
+    <div class="col-3">
+        <ul>
+            @for (item of complaintUsers; track $index) {
+                <li>{{item.userName}}</li>
+            }
+        </ul>
+    </div>
+</div>
