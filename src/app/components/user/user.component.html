@@ -67,7 +67,18 @@
               [(ngModel)]="userObj.userName"
               name="userName"
               id="userName"
+              required
+              minlength="3"
+              #uName="ngModel"
             />
+            @if (uName.touched || uName.dirty) {
+              @if (uName.errors?.["required"]) {
+                <span class="text-danger">This is required</span>
+              }
+              @if (uName.errors?.["minlength"]) {
+                <span class="text-danger">Min 3 characters needed </span>
+              }
+            }
           </div>
           <div class="col-6">
             <label for="password" class="form-label">Password</label>

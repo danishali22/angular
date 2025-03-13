@@ -1,1 +1,125 @@
-<p>user-reactive works!</p>
+<div class="row">
+  <div [class]="isFormVisible == true ? 'col-7' : 'col-12'">
+    <div class="card">
+      <div class="card-header">
+        <div class="row">
+          <div class="col-6">
+            <h2>User List</h2>
+          </div>
+          <div class="col-6 text-end">
+            <button class="btn btn-info" (click)="toggleFormVisibility()">Add New User</button>
+          </div>
+        </div>
+      </div>
+      <div class="card-body">
+        <table class="table">
+          <thead>
+            <tr>
+              <th scope="col">#</th>
+              <th scope="col">Username</th>
+              <th scope="col">Password</th>
+              <th scope="col">Full Name</th>
+              <th scope="col">Role</th>
+              <th scope="col">Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let item of userList; let sr = index">
+              <th scope="row">{{ sr + 1 }}</th>
+              <td>{{ item.userName }}</td>
+              <td>{{ item.password }}</td>
+              <td>{{ item.fullName }}</td>
+              <td>{{ item.role }}</td>
+              <td>
+                <button
+                  type="button"
+                  class="btn btn-warning"
+                >
+                  Edit
+                </button>
+                <button
+                  type="button"
+                  class="btn btn-danger mx-2"
+                >
+                  Delete
+                </button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+  <div class="col-5" *ngIf="isFormVisible">
+    <div class="card">
+      <div class="card-header">
+        <div class="row">
+          <div class="col-6">
+            <h2>Add User</h2>
+          </div>
+          <div class="col-6 text-end">
+            <button class="btn btn-secondary" (click)="toggleFormVisibility()">Close</button>
+          </div>
+        </div>
+      </div>
+      <div class="card-body">
+        <form [formGroup]="userForm">
+            <div class="row mb-2 p-3">
+          <div class="col-6">
+            <label for="userName" class="form-label">Username</label>
+            <input
+              type="text"
+              class="form-control"
+              id="userName"
+              formControlName="userName"
+            />
+            @if (userForm.controls["userName"].touched) {
+                @if (userForm.controls["userName"]?.errors?.["required"]) {
+                    <span class="text-danger">This is Required</span>
+                }
+                @if (userForm.controls["userName"]?.errors?.["minlength"]) {
+                    <span class="text-danger">Min characters needed</span>
+                }
+            }
+          </div>
+          <div class="col-6">
+            <label for="password" class="form-label">Password</label>
+            <input
+              type="password"
+              class="form-control"
+              id="password"
+              formControlName="password"
+            />
+          </div>
+        </div>
+        <div class="row mb-2 p-3">
+          <div class="col-6">
+            <label for="fullName" class="form-label">Full Name</label>
+            <input
+              type="text"
+              class="form-control"
+              id="fullName"
+              formControlName="fullName"
+            />
+          </div>
+          <div class="col-6">
+            <label for="role" class="form-label">Role</label>
+            <input
+              type="text"
+              class="form-control"
+              id="role"
+              formControlName="role"
+            />
+          </div>
+        </div>
+        <div class="px-3">
+          <button class="btn btn-primary mx-1" (click)="onSave()">
+            Save
+          </button>
+          <button class="btn btn-secondary">Cancel</button>
+        </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
