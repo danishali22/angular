@@ -74,10 +74,10 @@
               formControlName="userName"
             />
             @if (userForm.controls["userName"].touched) {
-                @if (userForm.controls["userName"]?.errors?.["required"]) {
+                @if (userForm.controls["userName"].errors?.["required"]) {
                     <span class="text-danger">This is Required</span>
                 }
-                @if (userForm.controls["userName"]?.errors?.["minlength"]) {
+                @if (userForm.controls["userName"].errors?.["minlength"]) {
                     <span class="text-danger">Min characters needed</span>
                 }
             }

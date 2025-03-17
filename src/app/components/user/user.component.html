@@ -20,16 +20,23 @@
               <th scope="col">Password</th>
               <th scope="col">Full Name</th>
               <th scope="col">Role</th>
+              <th scope="col">Date</th>
               <th scope="col">Actions</th>
             </tr>
           </thead>
           <tbody>
             <tr *ngFor="let item of userList; let sr = index">
               <th scope="row">{{ sr + 1 }}</th>
-              <td>{{ item.userName }}</td>
+              <td>{{ item.userName | lowercase }}</td>
               <td>{{ item.password }}</td>
-              <td>{{ item.fullName }}</td>
+              <td>{{ item.fullName | uppercase }} </td>
               <td>{{ item.role }}</td>
+              <td>
+                {{ item.createdDate | date }} <br>
+                {{ item.createdDate | date: 'dd-MMM-yyyy' }} <br>
+                {{ item.createdDate | date: 'dd-MM-yy' }} <br>
+                {{ item.createdDate | date: 'dd-MMM-yy' }}
+              </td>
               <td>
                 <button
                   type="button"
