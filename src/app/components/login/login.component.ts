@@ -14,6 +14,7 @@ export class LoginComponent {
 
   onLogin(){
     if (this.loginObj.username == "admin" && this.loginObj.password == "admin"){
+      localStorage.setItem("angularUser", this.loginObj.username);
       this.router.navigateByUrl("/directive");
     } else {
       alert("Wrong Credentials");
