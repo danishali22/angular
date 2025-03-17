@@ -7,38 +7,55 @@ import { ApiCallComponent } from './components/api-call/api-call.component';
 import { UserComponent } from './components/user/user.component';
 import { UserReactiveComponent } from './components/user-reactive/user-reactive.component';
 import { ResourceApiComponent } from './components/resource-api/resource-api.component';
+import { LoginComponent } from './components/login/login.component';
+import { LayoutComponent } from './components/layout/layout.component';
 
 export const routes: Routes = [
     {
-        path: "variables",
-        component: VariablesComponent,
+        path: "",
+        redirectTo: "login",
+        pathMatch: "full",
     },
     {
-        path: "data-binding",
-        component: DataBindingComponent,
+        path: "login",
+        component: LoginComponent,
     },
     {
-        path: "directive",
-        component: DirectiveComponent,
-    },
-    {
-        path: "template-form",
-        component: TemplateFormComponent,
-    },
-    {
-        path: "api-call",
-        component: ApiCallComponent,
-    },
-    {
-        path: "user",
-        component: UserComponent,
-    },
-    {
-        path: "user-reactive",
-        component: UserReactiveComponent,
-    },
-    {
-        path: "resource-api",
-        component: ResourceApiComponent,
+        path: "",
+        component: LayoutComponent,
+        children: [
+            {
+                path: "variables",
+                component: VariablesComponent,
+            },
+            {
+                path: "data-binding",
+                component: DataBindingComponent,
+            },
+            {
+                path: "directive",
+                component: DirectiveComponent,
+            },
+            {
+                path: "template-form",
+                component: TemplateFormComponent,
+            },
+            {
+                path: "api-call",
+                component: ApiCallComponent,
+            },
+            {
+                path: "user",
+                component: UserComponent,
+            },
+            {
+                path: "user-reactive",
+                component: UserReactiveComponent,
+            },
+            {
+                path: "resource-api",
+                component: ResourceApiComponent,
+            },
+        ]
     },
 ];

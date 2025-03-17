@@ -1,0 +1,17 @@
+<section>
+    <div class="container">
+        <div class="bg"></div>
+        <form action="">
+            <h2 class="heading">Login Here</h2>
+
+            <label for="email">Username: </label>
+            <input type="text" [(ngModel)]="loginObj.username" name="username">
+
+            <label for="password">Password: </label>
+            <input type="password" [(ngModel)]="loginObj.password" name="password">
+
+            <button class="login-btn" type="submit" (click)="onLogin()">Login</button>
+            <span class="register-btn">Don't have an account?</span>
+        </form>
+    </div>
+</section>
